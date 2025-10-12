@@ -53,13 +53,13 @@ export default function App() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img
-                src="/src/data/avatar.jpg"
-                alt="Abhinav Jaiswal"
+                src="src/data/avatar.jpg"
+                alt="Tuan Do Ba"
                 className="h-12 w-12 object-cover rounded-full"
               />
               <div>
                 <h1 className="text-lg font-bold text-white font-courgette">
-                  Abhinav Jaiswal
+                  Tuan Do Ba
                 </h1>
                 <p className="text-xs text-gray-400">Software Developer</p>
               </div>
@@ -157,6 +157,7 @@ export default function App() {
               element={<ProjectDetail onBack={handleBackToPortfolio} />}
             />
           </Routes>
+          
 
           <footer className="mt-8 pt-4 border-t border-gray-700 text-center text-gray-400 text-sm">
             <p>© 2025 TuanHannciD | All Rights Reserved</p>
