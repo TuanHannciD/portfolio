@@ -1,0 +1,18 @@
+{
+  "projects": [
+    {
+      "id": 1,
+      "title": "E-commerce Website",
+      "description": "E-commerce website for shoe retail with modern UI/UX design and shopping cart functionality.",
+      "url": "datn-lor.onrender.com",
+      "thumbnail": "/datn-lor.jpg"
+    },
+    {
+      "id": 2,
+      "title": "Portfolio",
+      "description": "My professional portfolio website showcasing my projects and skills.",
+      "url": "dobatuandev.up.railway.app",
+      "thumbnail": "/Portfolio.png"
+    }
+  ]
+}

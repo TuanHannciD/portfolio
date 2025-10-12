@@ -1,0 +1,62 @@
+{
+  "projectDetail": [
+    {
+      "id": 1,
+      "title": "E-commerce Website",
+      "description": "E-commerce website for shoe retail with modern UI/UX design and shopping cart functionality.",
+      "longDescription": "A comprehensive e-commerce platform built with modern web technologies. Features include user authentication, product catalog, shopping cart, payment integration, and admin dashboard. The project showcases full-stack development skills with responsive design and optimized performance.",
+      "url": "datn-lor.onrender.com",
+      "userdemo": "User Name : admin | Password: 123456",
+      "thumbnail": "/datn-lor.jpg",
+      "technologies": [
+        "C#",
+        ".NET Core 8",
+        ".NET Framework",
+        ".NET",
+        "Raiway",
+        "Render",
+        "Tailwind CSS",
+        "Bootstrap 5",
+        "GitHub"
+      ],
+      "status": "Completed",
+      "duration": "3 months",
+      "category": "Web Development",
+      "features": [
+        "POS System",
+        "User Authentication & Authorization",
+        "Product Catalog with Search & Filter",
+        "Shopping Cart & Wishlist",
+        "Payment Integration (Sanbox VNPay)",
+        "Admin Dashboard",
+        "Order Management",
+        "Responsive Design"
+      ],
+      "githubUrl": "https://github.com/TuanHannciD/DATN-LOR/",
+      "liveUrl": "https://datn-lor.onrender.com"
+    },
+    {
+      "id": 2,
+      "title": "Portfolio",
+      "description": "My professional portfolio website showcasing my projects and skills.",
+      "longDescription": "Portfolio website for Tuan Do Ba, a Software Developer. Built with ReactJS and Tailwind CSS animations.",
+      "url": "dobatuandev.up.railway.app",
+      "userdemo": "User Name : admin | Password: 123456",
+      "thumbnail": "/Portfolio.png",
+      "technologies": ["ReactJS", "Tailwind CSS", "EmailJS"],
+      "status": "Completed",
+      "duration": "1 Week",
+      "category": "Web Development",
+      "features": [
+        "Portfolio Website",
+        "Responsive Design",
+        "Contact Form Integration",
+        "Social Media Links",
+        "Project Showcase",
+        "Animation Effects"
+      ],
+      "githubUrl": "https://github.com/TuanHannciD/portfolio",
+      "liveUrl": "https://dobatuandev.up.railway.app"
+    }
+  ]
+}
