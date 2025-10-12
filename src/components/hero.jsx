@@ -1,6 +1,6 @@
 export default function Hero() {
   return (
-    <section id="about" className="mb-8 lg:mb-12">
+    <section id="about" className="fade-in mb-8 lg:mb-12">
       <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">
         Digital Identity
       </h1>

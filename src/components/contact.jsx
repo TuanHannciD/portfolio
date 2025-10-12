@@ -28,7 +28,7 @@ export default function Contact() {
       });
   };
   return (
-    <section id="contact" className="mb-12">
+    <section id="contact" className="fade-in mb-12">
       <h2 className="text-3xl font-bold text-white mb-8">Let's Connect</h2>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

@@ -1,72 +1,12 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import projectDetail from "../data/projectDetail.json";
 
 export default function ProjectDetail({ onBack }) {
   const [project, setProject] = useState(null);
   const { id } = useParams();
 
-  const projects = [
-    {
-      id: 1,
-      title: "E-commerce Website",
-      description:
-        "E-commerce website for shoe retail with modern UI/UX design and shopping cart functionality.",
-      longDescription:
-        "A comprehensive e-commerce platform built with modern web technologies. Features include user authentication, product catalog, shopping cart, payment integration, and admin dashboard. The project showcases full-stack development skills with responsive design and optimized performance.",
-      url: "datn-lor.onrender.com",
-      userdemo: "User Name : admin | Password: 123456",
-      thumbnail: "/datn-lor.jpg",
-      technologies: [
-        "C#",
-        ".NET Core 8",
-        ".NET Framework",
-        ".NET",
-        "Raiway",
-        "Render",
-        "Tailwind CSS",
-        "Bootstrap 5",
-        "GitHub",
-      ],
-      status: "Completed",
-      duration: "3 months",
-      category: "Web Development",
-      features: [
-        "User Authentication & Authorization",
-        "Product Catalog with Search & Filter",
-        "Shopping Cart & Wishlist",
-        "Payment Integration (Sanbox VNPay)",
-        "Admin Dashboard",
-        "Order Management",
-        "Responsive Design",
-      ],
-      githubUrl: "https://github.com/TuanHannciD/DATN-LOR/",
-      liveUrl: "https://datn-lor.onrender.com",
-    },
-    {
-      id: 2,
-      title: " Portfolio",
-      description:
-        "My professional portfolio website showcasing my projects and skills.",
-      longDescription:
-        "Portfolio website for Tuan Do Ba, a Software Developer. Built with ReactJS and Tailwind CSS animations.",
-      url: "terminal.iabhinav.me",
-      thumbnail: "/Portfolio.png",
-      technologies: ["ReactJS", "Tailwind CSS", "HTML5"],
-      features: [
-        "Interactive Terminal Interface",
-        "Keyboard Navigation",
-        "Command-based Interaction",
-        "Retro Styling & Animations",
-        "Responsive Design",
-        "Typewriter Effects",
-      ],
-      githubUrl: "https://github.com/username/terminal-portfolio",
-      liveUrl: "https://terminal.iabhinav.me",
-      status: "Completed",
-      duration: "1 Week",
-      category: "Web Development",
-    },
-  ];
+  const projects = projectDetail.projectDetail;
 
   useEffect(() => {
     const foundProject = projects.find((p) => p.id === parseInt(id));
@@ -75,7 +15,7 @@ export default function ProjectDetail({ onBack }) {
 
   if (!project) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="fade-in min-h-screen flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-2xl font-bold text-white mb-4">
             Project Not Found
@@ -92,7 +32,7 @@ export default function ProjectDetail({ onBack }) {
   }
 
   return (
-    <div className="min-h-screen">
+    <div className="fade-in min-h-screen">
       {/* Header with Back Button */}
       <div className="mb-8">
         <button

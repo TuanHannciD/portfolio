@@ -1,22 +1,6 @@
+import projects from "../data/projects.json";
 export default function Projects({ onProjectClick }) {
-  const featuredProjects = [
-    {
-      id: 1,
-      title: "E-commerce Website",
-      description:
-        "E-commerce website for shoe retail with modern UI/UX design and shopping cart functionality.",
-      url: "datn-lor.onrender.com",
-      thumbnail: "/datn-lor.jpg",
-    },
-    {
-      id: 2,
-      title: "Portfolio",
-      description:
-        "My professional portfolio website showcasing my projects and skills.",
-      url: "portfolio.dobatuan.dev",
-      thumbnail: "/Portfolio.png",
-    },
-  ];
+  const featuredProjects = projects.projects;
 
   const handleProjectClick = (project) => {
     if (onProjectClick) {
@@ -25,7 +9,7 @@ export default function Projects({ onProjectClick }) {
   };
 
   return (
-    <section id="portfolio" className="mb-8 lg:mb-12">
+    <section id="portfolio" className="fade-in mb-8 lg:mb-12">
       <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2 flex items-center gap-3">
         <i className="fas fa-folder text-white"></i>
         Featured Portfolios

@@ -166,11 +166,11 @@ export default function App() {
 
       {/* Desktop Layout */}
       <div className="hidden lg:flex gap-6 p-6 mt-10 ml-20">
-        <aside className="w-64 bg-[#1E1E1E] rounded-2xl p-6 shadow-lg shrink-0 self-start">
+        <aside className="fade-in  w-64 bg-[#1E1E1E] rounded-2xl p-6 shadow-lg shrink-0 self-start">
           <Sidebar />
         </aside>
 
-        <main className="flex-1 bg-[#2A2A2A] rounded-2xl shadow-lg overflow-y-auto ml-20 mr-20">
+        <main className="fade-in flex-1 bg-[#2A2A2A] rounded-2xl shadow-lg overflow-y-auto ml-20 mr-20">
           <section className="p-8">
             <Navbar
               activeSection={activeSection}
