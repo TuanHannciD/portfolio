@@ -107,7 +107,7 @@ export default function App() {
               >
                 Portfolio
               </button>
-              <button
+              {/* <button
                 onClick={() => handleNavClick("/portfolio")}
                 className={`px-3 py-2 rounded-lg text-left transition-colors ${
                   activeSection === "portfolio"
@@ -116,7 +116,7 @@ export default function App() {
                 }`}
               >
                 Featured
-              </button>
+              </button> */}
               <button
                 onClick={() => handleNavClick("/contact")}
                 className={`px-3 py-2 rounded-lg text-left transition-colors ${
@@ -151,18 +151,37 @@ export default function App() {
               element={<Projects onProjectClick={handleProjectClick} />}
             />
             <Route path="/contact" element={<Contact />} />
-            <Route path="/gallery" element={<Gallery />} />
             <Route
               path="/project/:id"
               element={<ProjectDetail onBack={handleBackToPortfolio} />}
             />
+            {/* Selection mở project.jsx */}
+            {/* Teaser Featured Portfolios dưới About, tối giản */}
           </Routes>
-          
-
-          <footer className="mt-8 pt-4 border-t border-gray-700 text-center text-gray-400 text-sm">
-            <p>© 2025 TuanHannciD | All Rights Reserved</p>
-          </footer>
+          {location.pathname === "/" && (
+            <section className="mt-8 mb-4">
+              <div
+                className="bg-[#242424] hover:bg-[#2b2b2b] transition-colors rounded-xl p-4 cursor-pointer"
+                onClick={() => handleNavClick("/portfolio")}
+              >
+                <div className="flex items-center gap-3">
+                  <i className="fas fa-folder text-white"></i>
+                  <h3 className="text-white font-semibold">
+                    Featured Portfolios
+                  </h3>
+                </div>
+                <p className="text-gray-400 text-sm mt-1">Portfolio</p>
+                {/* Text Click me to view my featured portfolios */}
+                <p className="text-gray-600 text-sm mt-1">
+                  Click me to view my featured portfolios
+                </p>
+              </div>
+            </section>
+          )}
         </main>
+        <footer className="mt-8 pt-4 border-t border-gray-700 text-center text-gray-400 text-sm">
+          <p>© 2025 TuanHannciD | All Rights Reserved</p>
+        </footer>
       </div>
 
       {/* Desktop Layout */}
