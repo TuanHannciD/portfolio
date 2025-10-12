@@ -14,7 +14,7 @@ export default function Sidebar() {
       {/* Profile Picture */}
       <img
         src={avatar}
-        alt="Abhinav Jaiswal"
+        alt="Tuan Do Ba"
         className="h-auto w-32 object-cover rounded-[6px] shadow-lg mb-4"
       />
 

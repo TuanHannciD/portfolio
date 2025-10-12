@@ -1,5 +1,6 @@
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import { useState } from "react";
+import avatar from "./data/avatar.jpg";
 
 import Sidebar from "./components/sidebar";
 import Navbar from "./components/navbar";
@@ -53,7 +54,7 @@ export default function App() {
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
               <img
-                src="src/data/avatar.jpg"
+                src={avatar}
                 alt="Tuan Do Ba"
                 className="h-12 w-12 object-cover rounded-full"
               />
