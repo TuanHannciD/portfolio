@@ -57,6 +57,44 @@
       ],
       "githubUrl": "https://github.com/TuanHannciD/portfolio",
       "liveUrl": "https://dobatuandev.up.railway.app"
+    },
+    {
+      "id": 3,
+      "title": "Appstore ID Portal UI",
+      "description": "A secure internal portal for managing and distributing Apple ID and app account access through an admin dashboard and a controlled public sharing flow.",
+      "longDescription": "Appstore ID Portal UI is a full-stack management portal designed to streamline the administration and controlled sharing of Apple ID and app account credentials. The system includes a dedicated admin interface for managing apps, account inventories, share pages, access passes, API-based account sources, and operational audit logs. On the public side, users can access a share link, submit a passcode for verification, receive a short-lived verification token, and reveal account credentials only when access is explicitly consumed. This architecture separates verification from credential reveal, helping improve security, prevent quota abuse, and provide a more auditable access lifecycle. The project was built with a focus on operational control, protected credential delivery, and scalable account-sharing workflows.",
+      "url": "https://panel.appstoreviet.com",
+      "userdemo": "Public sharing flow via /share/[code] and admin management dashboard via /admin",
+      "thumbnail": "/appstoreidportal.png",
+      "technologies": [
+        "Next.js 14",
+        "React 18",
+        "Prisma",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "Zod",
+        "Radix UI",
+        "TanStack Table",
+        "Lucide React",
+        "GitHub Actions"
+      ],
+      "features": [
+        "Admin authentication and separated admin/public application flows",
+        "App and app account inventory management",
+        "Share page creation and management for controlled credential distribution",
+        "Pass-based access control with quota, expiration, and revocation support",
+        "Multi-account assignment to individual share pages",
+        "Public verification flow with pass validation, token validation, and credential reveal",
+        "Quota consumption only at the reveal stage to reduce unnecessary usage loss",
+        "Rate limiting, short-lived verification tokens, and audit logging for access control events",
+        "API source integration and cron-based account synchronization",
+        "Deletion logs and traceability for apps, app accounts, share pages, and share passes"
+      ],
+      "githubUrl": "[Add your GitHub repository URL]",
+      "liveUrl": "https://panel.appstoreviet.com",
+      "category": "Admin Dashboard / Internal Tool / Access Management Platform",
+      "duration": "[Add project duration, e.g. 3 weeks]",
+      "status": "Completed"
     }
   ]
 }

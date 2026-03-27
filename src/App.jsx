@@ -1,23 +1,30 @@
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import avatar from "./data/avatar.jpg";
 
-import Sidebar from "./components/sidebar";
-import Navbar from "./components/navbar";
 import Hero from "./components/hero";
+import Experience from "./components/experience";
 import Projects from "./components/projects";
 import Contact from "./components/contact";
 import Gallery from "./components/gallery";
 import ProjectDetail from "./components/projectDetail";
+import DesktopLanding from "./components/desktopLanding";
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
-  // Lấy section active từ URL
+  const desktopProjectId = useMemo(() => {
+    const match = location.pathname.match(/^\/project\/(\d+)$/);
+    return match ? Number(match[1]) : null;
+  }, [location.pathname]);
+
   const getActiveSection = () => {
-    if (location.pathname === "/") return "about";
+    if (location.pathname === "/" || location.pathname === "/about") {
+      return "about";
+    }
+    if (location.pathname.startsWith("/experience")) return "experience";
     if (location.pathname.startsWith("/portfolio")) return "portfolio";
     if (location.pathname.startsWith("/project")) return "portfolio";
     if (location.pathname.startsWith("/contact")) return "contact";
@@ -47,9 +54,7 @@ export default function App() {
 
   return (
     <div className="bg-[#1A1A1A] min-h-screen">
-      {/* Mobile Layout */}
       <div className="lg:hidden">
-        {/* Header */}
         <div className="bg-[#2A2A2A] p-4">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-3">
@@ -78,7 +83,6 @@ export default function App() {
           </div>
         </div>
 
-        {/* Mobile Navigation */}
         <nav
           className={`bg-[#1E1E1E] transition-all duration-300 ${
             isMobileMenuOpen
@@ -99,6 +103,16 @@ export default function App() {
                 About
               </button>
               <button
+                onClick={() => handleNavClick("/experience")}
+                className={`px-3 py-2 rounded-lg text-left transition-colors ${
+                  activeSection === "experience"
+                    ? "bg-[#3A3A3A] text-white"
+                    : "hover:text-white"
+                }`}
+              >
+                Experience
+              </button>
+              <button
                 onClick={() => handleNavClick("/portfolio")}
                 className={`px-3 py-2 rounded-lg text-left transition-colors ${
                   activeSection === "portfolio"
@@ -108,16 +122,6 @@ export default function App() {
               >
                 Portfolio
               </button>
-              {/* <button
-                onClick={() => handleNavClick("/portfolio")}
-                className={`px-3 py-2 rounded-lg text-left transition-colors ${
-                  activeSection === "portfolio"
-                    ? "bg-[#3A3A3A] text-white"
-                    : "hover:text-white"
-                }`}
-              >
-                Featured
-              </button> */}
               <button
                 onClick={() => handleNavClick("/contact")}
                 className={`px-3 py-2 rounded-lg text-left transition-colors ${
@@ -142,22 +146,21 @@ export default function App() {
           </div>
         </nav>
 
-        {/* Mobile Content */}
         <main className="p-4">
           <Routes>
             <Route path="/" element={<Hero />} />
             <Route path="/about" element={<Hero />} />
+            <Route path="/experience" element={<Experience />} />
             <Route
               path="/portfolio"
               element={<Projects onProjectClick={handleProjectClick} />}
             />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/gallery" element={<Gallery />} />
             <Route
               path="/project/:id"
               element={<ProjectDetail onBack={handleBackToPortfolio} />}
             />
-            {/* Selection mở project.jsx */}
-            {/* Teaser Featured Portfolios dưới About, tối giản */}
           </Routes>
           {location.pathname === "/" && (
             <section className="mt-8 mb-4">
@@ -172,7 +175,6 @@ export default function App() {
                   </h3>
                 </div>
                 <p className="text-gray-400 text-sm mt-1">Portfolio</p>
-                {/* Text Click me to view my featured portfolios */}
                 <p className="text-gray-600 text-sm mt-1">
                   Click me to view my featured portfolios
                 </p>
@@ -180,46 +182,17 @@ export default function App() {
             </section>
           )}
         </main>
+
         <footer className="mt-8 pt-4 border-t border-gray-700 text-center text-gray-400 text-sm">
-          <p>© 2025 TuanHannciD | All Rights Reserved</p>
+          <p>� 2025 TuanHannciD | All Rights Reserved</p>
         </footer>
       </div>
 
-      {/* Desktop Layout */}
-      <div className="hidden lg:flex gap-6 p-6 mt-10 ml-20">
-        <aside className="fade-in  w-64 bg-[#1E1E1E] rounded-2xl p-6 shadow-lg shrink-0 self-start">
-          <Sidebar />
-        </aside>
-
-        <main className="fade-in flex-1 bg-[#2A2A2A] rounded-2xl shadow-lg overflow-y-auto ml-20 mr-20">
-          <section className="p-8">
-            <Navbar
-              activeSection={activeSection}
-              onNavClick={(sec) =>
-                handleNavClick(sec === "/" ? "/" : `/${sec}`)
-              }
-            />
-
-            <Routes>
-              <Route path="/" element={<Hero />} />
-              <Route path="/about" element={<Hero />} />
-              <Route
-                path="/portfolio"
-                element={<Projects onProjectClick={handleProjectClick} />}
-              />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/gallery" element={<Gallery />} />
-              <Route
-                path="/project/:id"
-                element={<ProjectDetail onBack={handleBackToPortfolio} />}
-              />
-            </Routes>
-
-            <footer className="mt-16 pt-8 border-t border-gray-700 text-center text-gray-400">
-              <p>© 2025 TuanHannciD | All Rights Reserved</p>
-            </footer>
-          </section>
-        </main>
+      <div className="hidden lg:block">
+        <DesktopLanding
+          pathname={location.pathname}
+          projectIdFromRoute={desktopProjectId}
+        />
       </div>
     </div>
   );

@@ -1,6 +1,11 @@
-import projects from "../data/projects.json";
-export default function Projects({ onProjectClick }) {
-  const featuredProjects = projects.projects;
+import projectsData from "../data/projects.json";
+
+export default function Projects({
+  onProjectClick,
+  featuredProjects,
+  registerProjectRef,
+}) {
+  const projects = featuredProjects ?? projectsData.projects;
 
   const handleProjectClick = (project) => {
     if (onProjectClick) {
@@ -9,28 +14,30 @@ export default function Projects({ onProjectClick }) {
   };
 
   return (
-    <section id="portfolio" className="fade-in mb-8 lg:mb-12">
-      <h2 className="text-2xl lg:text-3xl font-bold text-white mb-2 flex items-center gap-3">
+    <section id="portfolio" className="fade-in mb-8 lg:mb-0 scroll-mt-28">
+      <h2 className="mb-2 flex items-center gap-3 text-2xl font-bold text-white lg:text-3xl">
         <i className="fas fa-folder text-white"></i>
         Featured Portfolios
       </h2>
-      <p className="text-gray-400 mb-6 lg:mb-8">
-        A glimpse into my professional journey.
+      <p className="mb-6 text-gray-400 lg:mb-8">
+        Selected projects, demo access, and the details behind how they were built.
       </p>
 
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 lg:gap-6">
-        {featuredProjects.map((project) => (
-          <div
+      <div className="grid grid-cols-1 gap-4 lg:grid-cols-2 lg:gap-6">
+        {projects.map((project) => (
+          <article
             key={project.id}
-            className="group bg-[#2A2A2A] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer group"
+            ref={(node) => registerProjectRef?.(project.id, node)}
+            data-project-id={project.id}
+            className="group cursor-pointer overflow-hidden rounded-xl bg-[#242424] shadow-lg ring-1 ring-white/5 transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:ring-blue-400/40"
             onClick={() => handleProjectClick(project)}
           >
-            <div className="h-40 lg:h-48 bg-gray-600 flex items-center justify-center overflow-hidden relative">
+            <div className="relative flex h-40 items-center justify-center overflow-hidden bg-gray-600 lg:h-48">
               {project.thumbnail ? (
                 <img
                   src={project.thumbnail}
                   alt={project.title}
-                  className="w-full h-full object-fill hover:scale-105 transition-transform duration-300"
+                  className="h-full w-full object-fill transition-transform duration-300 group-hover:scale-105"
                   onError={(e) => {
                     e.target.style.display = "none";
                     e.target.nextSibling.style.display = "flex";
@@ -38,35 +45,34 @@ export default function Projects({ onProjectClick }) {
                 />
               ) : null}
               <div
-                className="text-gray-400 text-sm flex items-center justify-center w-full h-full"
+                className="flex h-full w-full items-center justify-center text-sm text-gray-400"
                 style={{ display: project.thumbnail ? "none" : "flex" }}
               >
                 Project Thumbnail
               </div>
 
-              {/* Overlay */}
-              <div className="absolute inset-0 opacity-60 group-hover:opacity-0 bg-black bg-opacity-100 transition-all duration-300 flex items-center justify-center pointer-events-none">
-                <div className=" bg-opacity-20 backdrop-blur-sm rounded-full p-3">
-                  <i className="fas fa-eye text-white text-xl"></i>
+              <div className="pointer-events-none absolute inset-0 flex items-center justify-center bg-black/60 opacity-70 transition-all duration-300 group-hover:opacity-0">
+                <div className="rounded-full p-3 backdrop-blur-sm">
+                  <i className="fas fa-eye text-xl text-white"></i>
                 </div>
               </div>
             </div>
+
             <div className="p-4 lg:p-6">
-              <div className="text-xs text-gray-400 mb-2">{project.url}</div>
-              <h3 className="text-lg lg:text-xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">
+              <div className="mb-2 text-xs text-gray-400">{project.url}</div>
+              <h3 className="mb-3 text-lg font-bold text-white transition-colors group-hover:text-blue-400 lg:text-xl">
                 {project.title}
               </h3>
-              <p className="text-gray-300 text-sm leading-relaxed">
+              <p className="text-sm leading-relaxed text-gray-300">
                 {project.description}
               </p>
 
-              {/* Click hint */}
-              <div className="mt-4 flex items-center gap-2 text-blue-400 text-sm opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span>Click to view details</span>
+              <div className="mt-4 flex items-center gap-2 text-sm text-blue-400 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <span>Open project story</span>
                 <i className="fas fa-arrow-right"></i>
               </div>
             </div>
-          </div>
+          </article>
         ))}
       </div>
     </section>

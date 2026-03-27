@@ -1,12 +1,14 @@
 import avatar from "../data/avatar.jpg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faLinkedin,
   faGithub,
   faFacebook,
   faInstagram,
-  faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
+import contact from "../data/contact.json";
+  const { name, email, address } = contact;
+
+
 
 export default function Sidebar() {
   return (
@@ -23,7 +25,7 @@ export default function Sidebar() {
         className="text-2xl font-bold font-courgette text-white mb-2"
         style={{ fontFamily: "Courgette, Comic Sans MS, cursive" }}
       >
-        Tuan Do Ba
+        {name}
       </h2>
       <div className="bg-[#3A3A3A] text-gray-300 px-4 py-2 rounded-full text-sm mb-6">
         Software Developer
@@ -33,11 +35,11 @@ export default function Sidebar() {
       <div className="space-y-3 w-full mb-6">
         <div className="flex items-center gap-3 text-gray-300">
           <i className="fas fa-envelope text-gray-400"></i>
-          <span>dobatuan.dev@gmail.com</span>
+          <span>{email}</span>
         </div>
         <div className="flex items-center gap-3 text-gray-300">
           <i className="fas fa-map-marker-alt text-gray-400"></i>
-          <span>Ha Noi, Viet Nam</span>
+          <span>{address}</span>
         </div>
       </div>
 

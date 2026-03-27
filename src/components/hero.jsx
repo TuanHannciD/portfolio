@@ -1,29 +1,23 @@
 export default function Hero() {
   return (
     <section id="about" className="fade-in mb-8 lg:mb-12">
-      <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6">
+      <h1 className="text-3xl lg:text-4xl font-bold text-white mb-4 lg:mb-6 ">
         Digital Identity
       </h1>
       <div className="text-base lg:text-lg text-gray-300 max-w-4xl leading-relaxed space-y-3 lg:space-y-4">
-        <p>
-          I'm Tuan Do Ba, a recent graduate in Software Development from FPT
-          Polytechnic College, Hanoi. I’m passionate about Back-end development,
-          web technologies, and building practical applications.
+        <p className="ps-4 pt-4">
+          I'm Tuan Do Ba, a junior .NET developer with hands-on experience in
+          web application development, legacy-to-web migration, and internal
+          testing support in a real business environment. I have a solid
+          foundation in C#, JavaScript, SQL Server, RESTful APIs, GitHub,
+          ReactJS, NodeJS, .NET Core, and .NET Framework.
         </p>
-        <p>
-          I’ve built a strong foundation in: C#, JavaScript, SQL Server, RESTful
-          API, GitHub, ReactJS, NodeJS, .NET Core, and .NET Framework.
-        </p>
-        <p>
-          In the short term, I aim to become a Back-end Developer, and over
-          time, I’m working toward becoming a Fullstack Developer.
-        </p>
-        <p>
-          I enjoy learning through real projects and continuously improving my
-          skills to meet industry expectations.
-        </p>
-        <p className="text-sm text-gray-400 italic">
-          This portfolio is maintained by Tuan Do Ba.
+        <p className="ps-4">
+          I’m currently focused on growing as a Back-end / .NET Developer while
+          continuing to strengthen my understanding of full-stack development. I
+          enjoy learning through real projects, improving problem-solving
+          skills, and building practical applications that support real business
+          needs.
         </p>
       </div>
       {/* One-column layout: Education timeline + Highlighted Skills */}
@@ -74,7 +68,14 @@ export default function Hero() {
               ".NET Framework",
               "ReactJS",
               "Git",
-              "SQL",
+              "SQL Server",
+              "RESTful API",
+              "Bootstrap 5",
+              "jQuery",
+              "ASP.NET MVC",
+              "Next.js",
+              "PostgreSQL",
+              "GitHub",
             ].map((skill) => (
               <span
                 key={skill}
@@ -89,3 +90,5 @@ export default function Hero() {
     </section>
   );
 }
+
+

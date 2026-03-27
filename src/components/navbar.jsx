@@ -1,9 +1,9 @@
 export default function Navbar({ activeSection, onNavClick }) {
   return (
-    <nav className="flex justify-end gap-8 text-gray-400 font-medium mb-8">
+    <nav className="flex flex-wrap justify-end gap-3 text-sm font-medium text-gray-400 lg:gap-4 lg:text-base">
       <button
         onClick={() => onNavClick("about")}
-        className={`px-4 py-2 rounded-lg transition-colors ${
+        className={`rounded-full px-4 py-2 transition-colors ${
           activeSection === "about"
             ? "bg-[#3A3A3A] text-white"
             : "hover:text-white"
@@ -12,8 +12,18 @@ export default function Navbar({ activeSection, onNavClick }) {
         About
       </button>
       <button
+        onClick={() => onNavClick("experience")}
+        className={`rounded-full px-4 py-2 transition-colors ${
+          activeSection === "experience"
+            ? "bg-[#3A3A3A] text-white"
+            : "hover:text-white"
+        }`}
+      >
+        Experience
+      </button>
+      <button
         onClick={() => onNavClick("portfolio")}
-        className={`px-4 py-2 rounded-lg transition-colors ${
+        className={`rounded-full px-4 py-2 transition-colors ${
           activeSection === "portfolio"
             ? "bg-[#3A3A3A] text-white"
             : "hover:text-white"
@@ -23,7 +33,7 @@ export default function Navbar({ activeSection, onNavClick }) {
       </button>
       <button
         onClick={() => onNavClick("contact")}
-        className={`px-4 py-2 rounded-lg transition-colors ${
+        className={`rounded-full px-4 py-2 transition-colors ${
           activeSection === "contact"
             ? "bg-[#3A3A3A] text-white"
             : "hover:text-white"
@@ -31,16 +41,16 @@ export default function Navbar({ activeSection, onNavClick }) {
       >
         Contact
       </button>
-      {/* <button
+      <button
         onClick={() => onNavClick("gallery")}
-        className={`px-4 py-2 rounded-lg transition-colors ${
+        className={`rounded-full px-4 py-2 transition-colors ${
           activeSection === "gallery"
             ? "bg-[#3A3A3A] text-white"
             : "hover:text-white"
         }`}
       >
         Gallery
-      </button> */}
+      </button>
     </nav>
   );
 }

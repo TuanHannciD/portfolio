@@ -1,0 +1,19 @@
+{
+  "experience": [
+    {
+      "id": 1,
+      "company": "ONES SOLUTION",
+      "role": "Fresher Full Stack .NET Developer",
+      "duration": "May 2025 - Mar 2026",
+      "project": "PMSH System for a 5-Star Hotel",
+      "techStack": ".NET 9, Razor Pages, JavaScript, jQuery, Bootstrap 5, DevExtreme, SQL Server, GitHub",
+      "highlights": [
+        "Participated in developing PMSH software for a 5-star hotel system in a real-world operational environment.",
+        "Contributed to migrating the system from WinForms to a web application by rebuilding screens and processing workflows on the web platform.",
+        "Improved user experience by reducing full-page reloads through the use of modals combined with partial views, making interactions smoother and more seamless.",
+        "Standardized DateTime formatting in API workflows, helping reduce validation errors caused by incorrect formats.",
+        "Contributed to helping the project pass two rounds of internal testing and become ready for the client testing phase."
+      ]
+    }
+  ]
+}

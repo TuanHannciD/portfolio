@@ -1,7 +1,7 @@
 import contact from "../data/contact.json";
 import emailjs from "emailjs-com";
 export default function Contact() {
-  const { name, email, phone, address } = contact;
+  const {  email, phone } = contact;
   const handleSubmit = (e) => {
     e.preventDefault();
     const fileInput = e.target.attachment.files[0];
@@ -59,7 +59,7 @@ export default function Contact() {
               <i className="text-gray-400">
                 {" "}
                 <img
-                  src="MyInfor_qrcode.png"
+                  src="/MyInfor_qrcode.png"
                   alt="QR Code"
                   className="w-full h-full"
                 />
