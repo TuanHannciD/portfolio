@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+  workflow_dispatch:
 
 concurrency:
   group: portfolio-production
@@ -40,14 +41,23 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_HOST }} >> ~/.ssh/known_hosts
 
+      - name: Test SSH
+        run: |
+          ssh -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} "echo SSH_OK"
+
       - name: Ensure target folder exists
         run: |
           ssh -p ${{ secrets.SERVER_PORT }} ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }} \
-            "mkdir -p /www/wwwroot/portfolio/dist"
+            "sudo mkdir -p /www/wwwroot/portfolio/dist"
 
       - name: Deploy dist to server
         run: |
-          sudo rsync -avz --delete \
+          rsync -avz --delete \
+            --omit-dir-times \
+            --no-perms \
+            --no-owner \
+            --no-group \
+            --rsync-path="sudo rsync" \
             -e "ssh -p ${{ secrets.SERVER_PORT }}" \
             ./dist/ \
             ${{ secrets.SERVER_USER }}@${{ secrets.SERVER_HOST }}:/www/wwwroot/portfolio/dist/
