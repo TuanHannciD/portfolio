@@ -17,7 +17,7 @@ export default function ProjectDetailContent({ project, compact = false }) {
           className={`w-full ${compact ? "max-h-[320px] object-scale-down" : "h-64 lg:h-80 object-fill"}`}
           onError={(e) => {
             e.target.src = `https://via.placeholder.com/800x400/2A2A2A/FFFFFF?text=${encodeURIComponent(
-              project.title
+              project.title,
             )}`;
           }}
         />
@@ -26,15 +26,25 @@ export default function ProjectDetailContent({ project, compact = false }) {
       <div className="grid grid-cols-1 gap-8 lg:grid-cols-3">
         <div className="space-y-8 lg:col-span-2">
           <section>
-            <h2 className="mb-4 text-2xl font-bold text-white">About This Project</h2>
-            <p className="mb-4 leading-relaxed text-gray-300">{project.description}</p>
-            <p className="leading-relaxed text-gray-300">{project.longDescription}</p>
+            <h2 className="mb-4 text-2xl font-bold text-white">
+              About This Project
+            </h2>
+            <p className="mb-4 leading-relaxed text-gray-300">
+              {project.description}
+            </p>
+            <p className="leading-relaxed text-gray-300">
+              {project.longDescription}
+            </p>
           </section>
 
           <section>
             <h2 className="mb-4 text-2xl font-bold text-white">Demo Account</h2>
             <div className="rounded-xl border border-blue-400/30 bg-blue-500/10 p-4 text-blue-100">
-              {project.userdemo}
+              <div>
+                {project.userdemo.map((item, index) => (
+                  <p key={index}>{item}</p>
+                ))}
+              </div>
             </div>
           </section>
 
@@ -42,7 +52,10 @@ export default function ProjectDetailContent({ project, compact = false }) {
             <h2 className="mb-4 text-2xl font-bold text-white">Key Features</h2>
             <ul className="space-y-2">
               {project.features.map((feature, index) => (
-                <li key={index} className="flex items-start gap-3 text-gray-300">
+                <li
+                  key={index}
+                  className="flex items-start gap-3 text-gray-300"
+                >
                   <i className="fas fa-check mt-1 text-sm text-green-400"></i>
                   <span>{feature}</span>
                 </li>
@@ -53,7 +66,9 @@ export default function ProjectDetailContent({ project, compact = false }) {
 
         <div className="space-y-6">
           <section>
-            <h3 className="mb-4 text-xl font-bold text-white">Technologies Used</h3>
+            <h3 className="mb-4 text-xl font-bold text-white">
+              Technologies Used
+            </h3>
             <div className="flex flex-wrap gap-2">
               {project.technologies.map((tech, index) => (
                 <span
@@ -96,15 +111,21 @@ export default function ProjectDetailContent({ project, compact = false }) {
             <div className="space-y-3 text-gray-300">
               <div className="flex justify-between gap-4">
                 <span>Category</span>
-                <span className="text-right text-white">{project.category}</span>
+                <span className="text-right text-white">
+                  {project.category}
+                </span>
               </div>
               <div className="flex justify-between gap-4">
                 <span>Duration</span>
-                <span className="text-right text-white">{project.duration}</span>
+                <span className="text-right text-white">
+                  {project.duration}
+                </span>
               </div>
               <div className="flex justify-between gap-4">
                 <span>Status</span>
-                <span className="text-right text-green-400">{project.status}</span>
+                <span className="text-right text-green-400">
+                  {project.status}
+                </span>
               </div>
             </div>
           </section>

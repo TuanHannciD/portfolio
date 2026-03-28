@@ -1,6 +1,71 @@
 {
   "projectDetail": [
     {
+      "id": 2,
+      "title": "Portfolio",
+      "description": "My professional portfolio website showcasing my projects and skills.",
+      "longDescription": "Portfolio website for Tuan Do Ba, a Software Developer. Built with ReactJS and Tailwind CSS animations.",
+      "url": "portfolio.servertun.pp.ua",
+      "userdemo": "User Name : admin | Password: 123456",
+      "thumbnail": "/Portfolio.png",
+      "technologies": ["ReactJS", "Tailwind CSS", "EmailJS"],
+      "status": "Completed",
+      "duration": "1 Week",
+      "category": "Web Development",
+      "features": [
+        "Portfolio Website",
+        "Responsive Design",
+        "Contact Form Integration",
+        "Social Media Links",
+        "Project Showcase",
+        "Animation Effects"
+      ],
+      "githubUrl": "https://github.com/TuanHannciD/portfolio",
+      "liveUrl": "https://portfolio.servertun.pp.ua/"
+    },
+    {
+      "id": 1,
+      "title": "Appstore ID Portal UI",
+      "description": "A secure internal portal for managing and distributing Apple ID and app account access through an admin dashboard and a controlled public sharing flow.",
+      "longDescription": "Appstore ID Portal UI is a full-stack management portal designed to streamline the administration and controlled sharing of Apple ID and app account credentials. The system includes a dedicated admin interface for managing apps, account inventories, share pages, access passes, API-based account sources, and operational audit logs. On the public side, users can access a share link, submit a passcode for verification, receive a short-lived verification token, and reveal account credentials only when access is explicitly consumed. This architecture separates verification from credential reveal, helping improve security, prevent quota abuse, and provide a more auditable access lifecycle. The project was built with a focus on operational control, protected credential delivery, and scalable account-sharing workflows.",
+      "url": "appstoreidportal.servertun.pp.ua",
+      "userdemo": [
+        "Public sharing flow via /share/[code] and admin management dashboard via /admin",
+        "Admin User: admin@example.com | Pass: admin-123456 ",
+        "Test share code: appstoreidportal.servertun.pp.ua/share/CMN3IP-09-5141 | Pass: 123456"
+      ],
+      "thumbnail": "/appstoreidportal.png",
+      "technologies": [
+        "Next.js 14",
+        "React 18",
+        "Prisma",
+        "PostgreSQL",
+        "Tailwind CSS",
+        "Zod",
+        "Radix UI",
+        "TanStack Table",
+        "Lucide React",
+        "GitHub Actions"
+      ],
+      "features": [
+        "Admin authentication and separated admin/public application flows",
+        "App and app account inventory management",
+        "Share page creation and management for controlled credential distribution",
+        "Pass-based access control with quota, expiration, and revocation support",
+        "Multi-account assignment to individual share pages",
+        "Public verification flow with pass validation, token validation, and credential reveal",
+        "Quota consumption only at the reveal stage to reduce unnecessary usage loss",
+        "Rate limiting, short-lived verification tokens, and audit logging for access control events",
+        "API source integration and cron-based account synchronization",
+        "Deletion logs and traceability for apps, app accounts, share pages, and share passes"
+      ],
+      "githubUrl": "https://github.com/TuanHannciD/AppStoreIDPortal",
+      "liveUrl": "https://appstoreidportal.servertun.pp.ua/login",
+      "category": "Admin Dashboard / Internal Tool / Access Management Platform",
+      "duration": "2 Weeks]",
+      "status": "Completed"
+    },
+    {
       "id": 3,
       "title": "E-commerce Website",
       "description": "E-commerce website for shoe retail with modern UI/UX design and shopping cart functionality.",
@@ -34,67 +99,6 @@
       ],
       "githubUrl": "https://github.com/TuanHannciD/DATN-LOR/",
       "liveUrl": "https://portfolio.servertun.pp.ua/"
-    },
-    {
-      "id": 2,
-      "title": "Portfolio",
-      "description": "My professional portfolio website showcasing my projects and skills.",
-      "longDescription": "Portfolio website for Tuan Do Ba, a Software Developer. Built with ReactJS and Tailwind CSS animations.",
-      "url": "portfolio.servertun.pp.ua",
-      "userdemo": "User Name : admin | Password: 123456",
-      "thumbnail": "/Portfolio.png",
-      "technologies": ["ReactJS", "Tailwind CSS", "EmailJS"],
-      "status": "Completed",
-      "duration": "1 Week",
-      "category": "Web Development",
-      "features": [
-        "Portfolio Website",
-        "Responsive Design",
-        "Contact Form Integration",
-        "Social Media Links",
-        "Project Showcase",
-        "Animation Effects"
-      ],
-      "githubUrl": "https://github.com/TuanHannciD/portfolio",
-      "liveUrl": "https://portfolio.servertun.pp.ua/"
-    },
-    {
-      "id": 1,
-      "title": "Appstore ID Portal UI",
-      "description": "A secure internal portal for managing and distributing Apple ID and app account access through an admin dashboard and a controlled public sharing flow.",
-      "longDescription": "Appstore ID Portal UI is a full-stack management portal designed to streamline the administration and controlled sharing of Apple ID and app account credentials. The system includes a dedicated admin interface for managing apps, account inventories, share pages, access passes, API-based account sources, and operational audit logs. On the public side, users can access a share link, submit a passcode for verification, receive a short-lived verification token, and reveal account credentials only when access is explicitly consumed. This architecture separates verification from credential reveal, helping improve security, prevent quota abuse, and provide a more auditable access lifecycle. The project was built with a focus on operational control, protected credential delivery, and scalable account-sharing workflows.",
-      "url": "appstoreidportal.servertun.pp.ua",
-      "userdemo": "Public sharing flow via /share/[code] and admin management dashboard via /admin",
-      "thumbnail": "/appstoreidportal.png",
-      "technologies": [
-        "Next.js 14",
-        "React 18",
-        "Prisma",
-        "PostgreSQL",
-        "Tailwind CSS",
-        "Zod",
-        "Radix UI",
-        "TanStack Table",
-        "Lucide React",
-        "GitHub Actions"
-      ],
-      "features": [
-        "Admin authentication and separated admin/public application flows",
-        "App and app account inventory management",
-        "Share page creation and management for controlled credential distribution",
-        "Pass-based access control with quota, expiration, and revocation support",
-        "Multi-account assignment to individual share pages",
-        "Public verification flow with pass validation, token validation, and credential reveal",
-        "Quota consumption only at the reveal stage to reduce unnecessary usage loss",
-        "Rate limiting, short-lived verification tokens, and audit logging for access control events",
-        "API source integration and cron-based account synchronization",
-        "Deletion logs and traceability for apps, app accounts, share pages, and share passes"
-      ],
-      "githubUrl": "https://github.com/TuanHannciD/AppStoreIDPortal",
-      "liveUrl": "https://appstoreidportal.servertun.pp.ua/",
-      "category": "Admin Dashboard / Internal Tool / Access Management Platform",
-      "duration": "[Add project duration, e.g. 3 weeks]",
-      "status": "Completed"
     }
   ]
 }
