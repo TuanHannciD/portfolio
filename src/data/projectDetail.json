@@ -6,7 +6,7 @@
       "description": "My professional portfolio website showcasing my projects and skills.",
       "longDescription": "Portfolio website for Tuan Do Ba, a Software Developer. Built with ReactJS and Tailwind CSS animations.",
       "url": "portfolio.servertun.pp.ua",
-      "userdemo": "User Name : admin | Password: 123456",
+      "userdemo": [],
       "thumbnail": "/Portfolio.png",
       "technologies": ["ReactJS", "Tailwind CSS", "EmailJS"],
       "status": "Completed",
@@ -71,7 +71,7 @@
       "description": "E-commerce website for shoe retail with modern UI/UX design and shopping cart functionality.",
       "longDescription": "A comprehensive e-commerce platform built with modern web technologies. Features include user authentication, product catalog, shopping cart, payment integration, and admin dashboard. The project showcases full-stack development skills with responsive design and optimized performance.",
       "url": "portfolio.servertun.pp.ua",
-      "userdemo": "User Name : admin | Password: 123456",
+      "userdemo": ["User Name : admin | Password: 123456"],
       "thumbnail": "/datn-lor.jpg",
       "technologies": [
         "C#",
