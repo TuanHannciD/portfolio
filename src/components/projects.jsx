@@ -1,11 +1,11 @@
-import projectsData from "../data/projects.json";
+import projectDetailData from "../data/projectDetail.json";
 
 export default function Projects({
   onProjectClick,
   featuredProjects,
   registerProjectRef,
 }) {
-  const projects = featuredProjects ?? projectsData.projects;
+  const projects = featuredProjects ?? projectDetailData.projectDetail;
 
   const handleProjectClick = (project) => {
     if (onProjectClick) {
