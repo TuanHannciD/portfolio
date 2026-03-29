@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import avatar from "./data/avatar.jpg";
 
 import Hero from "./components/hero";
@@ -12,6 +12,10 @@ import DesktopLanding from "./components/desktopLanding";
 
 export default function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isDesktop, setIsDesktop] = useState(() => {
+    if (typeof window === "undefined") return false;
+    return window.innerWidth >= 1024;
+  });
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -19,6 +23,24 @@ export default function App() {
     const match = location.pathname.match(/^\/project\/(\d+)$/);
     return match ? Number(match[1]) : null;
   }, [location.pathname]);
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(min-width: 1024px)");
+
+    const handleChange = (event) => {
+      setIsDesktop(event.matches);
+    };
+
+    setIsDesktop(mediaQuery.matches);
+
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleChange);
+      return () => mediaQuery.removeEventListener("change", handleChange);
+    }
+
+    mediaQuery.addListener(handleChange);
+    return () => mediaQuery.removeListener(handleChange);
+  }, []);
 
   const getActiveSection = () => {
     if (location.pathname === "/" || location.pathname === "/about") {
@@ -54,146 +76,146 @@ export default function App() {
 
   return (
     <div className="bg-[#1A1A1A] min-h-screen">
-      <div className="lg:hidden">
-        <div className="bg-[#2A2A2A] p-4">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <img
-                src={avatar}
-                alt="Tuan Do Ba"
-                className="h-12 w-12 object-cover rounded-full"
-              />
-              <div>
-                <h1 className="text-lg font-bold text-white font-courgette">
-                  Tuan Do Ba
-                </h1>
-                <p className="text-xs text-gray-400">Software Developer</p>
-              </div>
-            </div>
-            <button
-              className="text-white hover:text-gray-300 transition-colors p-2"
-              onClick={toggleMobileMenu}
-            >
-              <i
-                className={`fas ${
-                  isMobileMenuOpen ? "fa-times" : "fa-bars"
-                } text-xl`}
-              />
-            </button>
-          </div>
-        </div>
-
-        <nav
-          className={`bg-[#1E1E1E] transition-all duration-300 ${
-            isMobileMenuOpen
-              ? "max-h-96 opacity-100"
-              : "max-h-0 opacity-0 overflow-hidden"
-          }`}
-        >
-          <div className="p-4">
-            <div className="flex flex-col gap-2 text-gray-400 font-medium">
-              <button
-                onClick={() => handleNavClick("/")}
-                className={`px-3 py-2 rounded-lg text-left transition-colors ${
-                  activeSection === "about"
-                    ? "bg-[#3A3A3A] text-white"
-                    : "hover:text-white"
-                }`}
-              >
-                About
-              </button>
-              <button
-                onClick={() => handleNavClick("/experience")}
-                className={`px-3 py-2 rounded-lg text-left transition-colors ${
-                  activeSection === "experience"
-                    ? "bg-[#3A3A3A] text-white"
-                    : "hover:text-white"
-                }`}
-              >
-                Experience
-              </button>
-              <button
-                onClick={() => handleNavClick("/portfolio")}
-                className={`px-3 py-2 rounded-lg text-left transition-colors ${
-                  activeSection === "portfolio"
-                    ? "bg-[#3A3A3A] text-white"
-                    : "hover:text-white"
-                }`}
-              >
-                Portfolio
-              </button>
-              <button
-                onClick={() => handleNavClick("/contact")}
-                className={`px-3 py-2 rounded-lg text-left transition-colors ${
-                  activeSection === "contact"
-                    ? "bg-[#3A3A3A] text-white"
-                    : "hover:text-white"
-                }`}
-              >
-                Contact
-              </button>
-              <button
-                onClick={() => handleNavClick("/gallery")}
-                className={`px-3 py-2 rounded-lg text-left transition-colors ${
-                  activeSection === "gallery"
-                    ? "bg-[#3A3A3A] text-white"
-                    : "hover:text-white"
-                }`}
-              >
-                Gallery
-              </button>
-            </div>
-          </div>
-        </nav>
-
-        <main className="p-4">
-          <Routes>
-            <Route path="/" element={<Hero />} />
-            <Route path="/about" element={<Hero />} />
-            <Route path="/experience" element={<Experience />} />
-            <Route
-              path="/portfolio"
-              element={<Projects onProjectClick={handleProjectClick} />}
-            />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/gallery" element={<Gallery />} />
-            <Route
-              path="/project/:id"
-              element={<ProjectDetail onBack={handleBackToPortfolio} />}
-            />
-          </Routes>
-          {location.pathname === "/" && (
-            <section className="mt-8 mb-4">
-              <div
-                className="bg-[#242424] hover:bg-[#2b2b2b] transition-colors rounded-xl p-4 cursor-pointer"
-                onClick={() => handleNavClick("/portfolio")}
-              >
-                <div className="flex items-center gap-3">
-                  <i className="fas fa-folder text-white"></i>
-                  <h3 className="text-white font-semibold">
-                    Featured Portfolios
-                  </h3>
+      {!isDesktop ? (
+        <>
+          <div className="bg-[#2A2A2A] p-4">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <img
+                  src={avatar}
+                  alt="Tuan Do Ba"
+                  className="h-12 w-12 rounded-full object-cover"
+                />
+                <div>
+                  <h1 className="font-courgette text-lg font-bold text-white">
+                    Tuan Do Ba
+                  </h1>
+                  <p className="text-xs text-gray-400">Software Developer</p>
                 </div>
-                <p className="text-gray-400 text-sm mt-1">Portfolio</p>
-                <p className="text-gray-600 text-sm mt-1">
-                  Click me to view my featured portfolios
-                </p>
               </div>
-            </section>
-          )}
-        </main>
+              <button
+                className="p-2 text-white transition-colors hover:text-gray-300"
+                onClick={toggleMobileMenu}
+              >
+                <i
+                  className={`fas ${
+                    isMobileMenuOpen ? "fa-times" : "fa-bars"
+                  } text-xl`}
+                />
+              </button>
+            </div>
+          </div>
 
-        <footer className="mt-8 pt-4 border-t border-gray-700 text-center text-gray-400 text-sm">
-          <p>© 2025 TuanHannciD | All Rights Reserved</p>
-        </footer>
-      </div>
+          <nav
+            className={`bg-[#1E1E1E] transition-all duration-300 ${
+              isMobileMenuOpen
+                ? "max-h-96 opacity-100"
+                : "max-h-0 overflow-hidden opacity-0"
+            }`}
+          >
+            <div className="p-4">
+              <div className="flex flex-col gap-2 font-medium text-gray-400">
+                <button
+                  onClick={() => handleNavClick("/")}
+                  className={`rounded-lg px-3 py-2 text-left transition-colors ${
+                    activeSection === "about"
+                      ? "bg-[#3A3A3A] text-white"
+                      : "hover:text-white"
+                  }`}
+                >
+                  About
+                </button>
+                <button
+                  onClick={() => handleNavClick("/experience")}
+                  className={`rounded-lg px-3 py-2 text-left transition-colors ${
+                    activeSection === "experience"
+                      ? "bg-[#3A3A3A] text-white"
+                      : "hover:text-white"
+                  }`}
+                >
+                  Experience
+                </button>
+                <button
+                  onClick={() => handleNavClick("/portfolio")}
+                  className={`rounded-lg px-3 py-2 text-left transition-colors ${
+                    activeSection === "portfolio"
+                      ? "bg-[#3A3A3A] text-white"
+                      : "hover:text-white"
+                  }`}
+                >
+                  Portfolio
+                </button>
+                <button
+                  onClick={() => handleNavClick("/contact")}
+                  className={`rounded-lg px-3 py-2 text-left transition-colors ${
+                    activeSection === "contact"
+                      ? "bg-[#3A3A3A] text-white"
+                      : "hover:text-white"
+                  }`}
+                >
+                  Contact
+                </button>
+                <button
+                  onClick={() => handleNavClick("/gallery")}
+                  className={`rounded-lg px-3 py-2 text-left transition-colors ${
+                    activeSection === "gallery"
+                      ? "bg-[#3A3A3A] text-white"
+                      : "hover:text-white"
+                  }`}
+                >
+                  Gallery
+                </button>
+              </div>
+            </div>
+          </nav>
 
-      <div className="hidden lg:block">
+          <main className="p-4">
+            <Routes>
+              <Route path="/" element={<Hero />} />
+              <Route path="/about" element={<Hero />} />
+              <Route path="/experience" element={<Experience />} />
+              <Route
+                path="/portfolio"
+                element={<Projects onProjectClick={handleProjectClick} />}
+              />
+              <Route path="/contact" element={<Contact />} />
+              <Route path="/gallery" element={<Gallery />} />
+              <Route
+                path="/project/:id"
+                element={<ProjectDetail onBack={handleBackToPortfolio} />}
+              />
+            </Routes>
+            {location.pathname === "/" && (
+              <section className="mb-4 mt-8">
+                <div
+                  className="cursor-pointer rounded-xl bg-[#242424] p-4 transition-colors hover:bg-[#2b2b2b]"
+                  onClick={() => handleNavClick("/portfolio")}
+                >
+                  <div className="flex items-center gap-3">
+                    <i className="fas fa-folder text-white"></i>
+                    <h3 className="font-semibold text-white">
+                      Featured Portfolios
+                    </h3>
+                  </div>
+                  <p className="mt-1 text-sm text-gray-400">Portfolio</p>
+                  <p className="mt-1 text-sm text-gray-600">
+                    Click me to view my featured portfolios
+                  </p>
+                </div>
+              </section>
+            )}
+          </main>
+
+          <footer className="mt-8 border-t border-gray-700 pt-4 text-center text-sm text-gray-400">
+            <p>ï¿½ 2025 TuanHannciD | All Rights Reserved</p>
+          </footer>
+        </>
+      ) : (
         <DesktopLanding
           pathname={location.pathname}
           projectIdFromRoute={desktopProjectId}
         />
-      </div>
+      )}
     </div>
   );
 }

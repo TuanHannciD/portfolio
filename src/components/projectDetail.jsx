@@ -27,7 +27,7 @@ export default function ProjectDetail({ onBack }) {
   }
 
   return (
-    <div className="fade-in overflow-auto lg:min-h-0 lg:max-h-[calc(100vh-20vh)]">
+    <div className="fade-in overflow-visible lg:min-h-0 lg:max-h-[calc(100vh-20vh)] lg:overflow-auto">
       <div className="mb-8">
         <button
           onClick={onBack}
